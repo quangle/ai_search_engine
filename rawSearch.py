@@ -83,7 +83,17 @@ class TFIDF():
     def search(self, q, k):
         # Search documents using TF-IDF
         results = []
-        return results
+        # lookp through docs
+        for i in range(len(self.docs)):
+            score = 0
+            i = str(i)
+            # loop through words in query
+            for t in q.split():
+                t = t.lower()
+                score += self.tf_idf_list[t][i] / self.ds[i]
+                results.append((score, i))
+        sorted(results, key= lambda x: -x[0])
+        return results[:k]
 
     # private methods
 

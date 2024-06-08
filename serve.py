@@ -22,6 +22,9 @@ def handle_query():
     # Search using TF-IDF
     filtered_results = tf_idf.search(clean_query, 10)
 
+    # temp return tf_idf filtered_results to test if it works
+    return jsonify({'response': filtered_results})
+
     # Re-rank using AI 
     re_ranker = ReRanker()
 
