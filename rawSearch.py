@@ -91,8 +91,10 @@ class TFIDF():
             for t in q.split():
                 t = t.lower()
                 score += self.tf_idf_list[t][i] / self.ds[i]
-                results.append((score, i))
-        sorted(results, key= lambda x: -x[0])
+
+            results.append((score, i))
+            
+        results = sorted(results, key= lambda x: -x[0])
         return results[:k]
 
     # private methods
