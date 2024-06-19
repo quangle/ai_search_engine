@@ -42,7 +42,6 @@ class ReRanker():
         pass
 
     def rank(self, query, docs):
-        query = query.lower()
         # get_embedding for query
         query_embedding = get_embedding([query])
         print(f'query_embedding: {query_embedding}')

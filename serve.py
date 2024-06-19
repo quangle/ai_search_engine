@@ -30,6 +30,7 @@ def handle_query():
     return jsonify({'response': scores})
 
 def process_query(query):
+    query = query.lower()
     return query
 
 if __name__ == '__main__':
