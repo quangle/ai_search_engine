@@ -3,3 +3,4 @@ Flask
 torch
 datasets
 transformers
+pandas
