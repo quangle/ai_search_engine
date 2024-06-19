@@ -90,7 +90,9 @@ class TFIDF():
             # loop through words in query
             for t in q.split():
                 t = t.lower()
-                score += self.tf_idf_list[t][i] / self.ds[i]
+                # need to check if query word exists in tf_idf_list
+                if t in self.tf_idf_list:
+                    score += self.tf_idf_list[t][i] / self.ds[i]
 
             results.append((score, i))
             
