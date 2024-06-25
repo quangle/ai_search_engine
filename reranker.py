@@ -44,10 +44,8 @@ class ReRanker():
     def rank(self, query, docs):
         # get_embedding for query
         query_embedding = get_embedding([query])
-        print(f'query_embedding: {query_embedding}')
 
         # Load các docs từ TF-IDF và chuyển thành Hugging Dataset
-        print(f'docs: {docs}')
         documents = [ {'id': int(doc[1]), 'text': self.docs[int(doc[1])] } for doc in docs]
         dataset_docs = Dataset.from_list(documents)
         # apply get_embedding to every dataset rows
@@ -56,7 +54,6 @@ class ReRanker():
         )
         # add faiss index to embeddings column
         dataset_docs.add_faiss_index(column='embeddings')
-        print(f'documents: {dataset_docs}')
         
         # Thực hiện tìm vector tương đồng với query
         scores, retrieved_examples = dataset_docs.get_nearest_examples('embeddings', query_embedding, k=10)

@@ -6,6 +6,7 @@ from reranker import ReRanker
 from rawSearch import TFIDF
 
 tf_idf = TFIDF()
+re_ranker = ReRanker()
 
 
 @app.route('/api/search', methods=['POST'])
@@ -23,7 +24,6 @@ def handle_query():
     filtered_results = tf_idf.search(clean_query, 10)
 
     # Re-rank using AI 
-    re_ranker = ReRanker()
 
     scores = re_ranker.rank(query, filtered_results)
 
